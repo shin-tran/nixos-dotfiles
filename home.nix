@@ -3,15 +3,6 @@ let
   dotfilesConfigPath = "${config.home.homeDirectory}/nixos-dotfiles/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 
-  configs = {
-    hypr = "hypr";
-    nvim = "nvim";
-    wofi = "wofi";
-    rofi = "rofi";
-    foot = "foot";
-    waybar = "waybar";
-  };
-
   configsName = [ "hypr" "nvim" "wofi" "rofi" "foot" "waybar" ];
 in
 {
@@ -106,13 +97,6 @@ in
       text = ''exec "${pkgs.nix-search-tv.src}/nixpkgs.sh" "$@"'';
     })
   ];
-
-  # xdg.configFile = builtins.mapAttrs
-  #   (name: subpath: {
-  #     source = create_symlink "${dotfilesConfigPath}/${subpath}";
-  #     recursive = true;
-  #   })
-  #   configs;
 
   xdg.configFile = pkgs.lib.genAttrs configsName
     (name: {
