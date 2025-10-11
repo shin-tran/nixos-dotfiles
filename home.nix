@@ -81,6 +81,7 @@ in
     nil
     nixpkgs-fmt
     nodejs
+    bun-baseline
     gcc
     wofi
     nitch
