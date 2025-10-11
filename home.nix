@@ -57,7 +57,7 @@ in
   };
 
   programs.bash = {
-    enable = true;
+    enable = false;
     shellAliases = {
       btw = "echo i use nixos, btw";
       nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-btw";
@@ -74,6 +74,38 @@ in
     '';
   };
 
+  programs.zsh = {
+    enable = true;
+
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    autosuggestion.enable = true;
+
+    oh-my-zsh = {
+      enable = true;
+      theme = "robbyrussell";
+      plugins = [
+        "git"
+      ];
+    };
+
+    shellAliases = {
+      btw = "echo i use nixos, btw";
+      nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-btw";
+      vim = "nvim";
+    };
+
+    initContent = ''
+      nitch
+    '';
+
+    profileExtra = ''
+      if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+        exec uwsm start -S hyprland-uwsm.desktop
+      fi
+    '';
+  };
+
   home.packages = with pkgs; [
     tree
     neovim
@@ -81,7 +113,7 @@ in
     nil
     nixpkgs-fmt
     nodejs
-    bun-baseline
+    bun
     gcc
     wofi
     nitch

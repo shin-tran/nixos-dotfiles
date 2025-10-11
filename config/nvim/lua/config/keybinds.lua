@@ -10,6 +10,7 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz") -- Keep cursor in place while moving up/
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")       -- center screen when looping search results
 vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "<leader>nh", ":nohlsearch<CR>", { silent = true })
 
 -- paste and don't replace clipboard over deleted text
 vim.keymap.set("x", "<leader>p", [["_dP]])
