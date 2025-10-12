@@ -1,327 +1,118 @@
-# TITLE: Hyprland on NixOS (w/ UWSM)
+# **My Personal NixOS & Hyprland Setup**
 
-## Installation for UEFI BIOS
+Welcome to my personal NixOS configuration\! This repository contains all the files needed to build a complete, beautiful, and productive desktop environment from scratch. It uses Nix Flakes for easy and reproducible builds.
 
-We're jumping straight into the minimal iso, and we'll speed run this since you've probably seen it 3 times by now, but a written guide will be provided below the subscribe button.
+The main goal is to have a system that is managed entirely by code. If I get a new computer, I can get this exact same setup running in minutes, not hours.
 
-First thing we need to do is run lsblk to know what our disk is named. We see its vda, so lets run
-#+begin_src sh
-cfdisk /dev/vda
-#+end_src
+## **✨ Features**
 
-And let's setup 2 partitions. First one will be 1gb, and lets change the type to EFI Filesystem, which is going to be our 1 gigabyte boot partition.
+This setup is built around a few core tools to create a fast, keyboard-driven experience:
 
-Secondly, we'll just hit enter twice to use the remaining space for our root file system. Let's write, type yes, and quit here.
+* **Operating System**: [NixOS](https://nixos.org/) (Unstable channel, using Flakes)  
+* **Window Manager**: [Hyprland](https://hyprland.org/) (A dynamic and stylish Wayland compositor)  
+* **Shell**: [Zsh](https://www.zsh.org/) with useful plugins like zsh-autosuggestions and zsh-syntax-highlighting.  
+* **Terminal**: [Foot](https://codeberg.org/dnkl/foot) (A fast and lightweight terminal for Wayland)  
+* **Status Bar**: [Waybar](https://github.com/Alexays/Waybar)  
+* **Application Launcher**: [Rofi](https://github.com/davatorium/rofi)  
+* **Text Editor**: [Neovim](https://neovim.io/), configured to be a full-featured IDE with LSP, autocompletion, and more.  
+* **File Manager**: [PCManFM](https://wiki.archlinux.org/title/PCManFM) (A lightweight file manager)
 
-Now lets make the filesystems.
+## **🚀 How to Use This Configuration**
 
-#+begin_src sh
-mkfs.ext4 -L nixos /dev/vda2
-mkfs.fat -F 32 -n BOOT /dev/vda1
-#+end_src
+You can use this repository as a starting point for your own NixOS setup.
 
-And lets mount these:
+### **Prerequisites**
 
-#+begin_src sh
-mount /dev/vda2 /mnt
-mount --mkdir /dev/vda1 /mnt/boot
-#+end_src
+* A running NixOS system with Git installed.  
+* You have enabled Flakes in your Nix configuration.
 
-And we can type lsblk to confirm here:
+### **Step 1: Clone the Repository**
 
-#+begin_src sh
-[root@nixos:~]# lsblk
-NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
-loop0    7:0    0  1.5G  1 loop /nix/.ro-store
-sr0     11:0    1  1.6G  0 rom  /iso
-vda    253:0    0   50G  0 disk
-├─vda1 253:1    0    1G  0 part /mnt/boot
-└─vda2 253:3    0   49G  0 part /mnt
-#+end_src
+First, clone this repository to a place you like, for example, \~/nixos-dotfiles.
 
-And we're already ready to generate the nixos configuration file.
+```sh
+git clone https://github.com/shin-tran/nixos-dotfiles.git ~/nixos-dotfiles
+cd ~/nixos-dotfiles
+```
 
-* Installation for UEFI BIOS
+### **Step 2: Edit Your Personal Information**
 
-We're jumping straight into the minimal iso, and we'll speed run this since you've probably seen it 3 times by now, but a written guide will be provided below the subscribe button.
+All personal settings like your username, email, and Git configuration are stored in one central place for easy editing.
 
-First thing we need to do is run lsblk to know what our disk is named. We see its vda, so lets run
-#+begin_src sh
-cfdisk /dev/vda
-#+end_src
+Open the file lib/globals.nix and change the values to match your own information.
 
-And let's setup 2 partitions. First one will be 1gb, and lets change the type to EFI Filesystem, which is going to be our 1 gigabyte boot partition.
+```sh
+# lib/globals.nix  
+{  
+  username = "ngoc"; # <-- Change this to your username  
+  stateVersion = "25.05";  
+  system = "x86_64-linux";
 
-Secondly, we'll just hit enter twice to use the remaining space for our root file system. Let's write, type yes, and quit here.
-
-Now lets make the filesystems.
-
-#+begin_src sh
-mkfs.ext4 -L nixos /dev/vda2
-mkfs.fat -F 32 -n BOOT /dev/vda1
-#+end_src
-
-And lets mount these:
-
-#+begin_src sh
-mount /dev/vda2 /mnt
-mount --mkdir /dev/vda1 /mnt/boot
-#+end_src
-
-And we can type lsblk to confirm here:
-
-#+begin_src sh
-[root@nixos:~]# lsblk
-NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
-loop0    7:0    0  1.5G  1 loop /nix/.ro-store
-sr0     11:0    1  1.6G  0 rom  /iso
-vda    253:0    0   50G  0 disk
-├─vda1 253:1    0    1G  0 part /mnt/boot
-└─vda2 253:3    0   49G  0 part /mnt
-#+end_src
-
-And we're already ready to generate the nixos configuration file.
-
-** Initial NixOS Config
-
-[[https://nixos.org/manual/nixos/stable/index.html#sec-installation-manual][Official NixOS Installation Handbook]]
-
-Alright, we're ready to generate the config file, so let's do so with the following command:
-
-This part is going to be a lot of configuration and text editing, so if you want everything I've put into these files, just follow along this written article.
-
-#+begin_src
-nixos-generate-config --root /mnt
-cd /mnt/etc/nixos/
-#+end_src
-
-Let's create flake.nix, and home.nix
-
-(This is my minimal vimrc that I use even on install ISOs)
-#+begin_src vim
-filetype plugin indent on
-set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-set number
-set relativenumber
-set smartindent
-set showmatch
-set backspace=indent,eol,start
-syntax on
-#+end_src
-
-*** flake.nix
-
-vim flake.nix
-
-Jumping into our flake.nix, this is where we define where our packages come from, so both configuration.nix and home.nix can inherit them through the flake and use them consistently.
-
-Couple of things worth noting here:
-
-1. nixpkgs is shorthand for github:NixOS/nixpkgs/nixos-unstable
-2. inputs.nixpkgs.follows = "nixpkgs": This prevents home-manager from pulling its own version of nixpkgs, keeping everything consistent and avoiding mismatched package sets.
-3. This modules section tells our flake to build the system using configuration.nix, and to configure Home Manager for the tony user using home.nix, with some options set inline.
-4. We include home-manager as a NixOS module here because we want Home Manager to be managed by the flake itself — meaning we don’t need to bootstrap it separately, and we don’t need to run home-manager switch. Instead, everything gets applied in one go with nixos-rebuild switch.
-
-vim flake.nix
-#+begin_src nix
-{
-  description = "Hyprland on Nixos";
-
-  inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
-
-  outputs = { self, nixpkgs, home-manager, ... }: {
-    nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.tony = import ./home.nix;
-            backupFileExtension = "backup";
-          };
-        }
-      ];
-    };
-  };
+  git = {  
+    name = "Your Full Name";          # <-- Your name here  
+    email = "your_email@example.com"; # <-- Your email here  
+  };  
 }
-#+end_src
+```
 
-We're ready to move onto our configuration.nix file.
+### **Step 3: Add Your Hardware Configuration**
 
-*** configuration.nix
+Every computer has a unique hardware setup (like disk drives). The hardware-configuration.nix file contains this information. This file is specific to your machine and **should not** be committed to Git.
 
-One of the beautiful things about NixOS is that your system is defined in various config files. You can think of it almost like of how your window manager is defined with config files, and you can port your window manager dotfiles to another distro, or another computer, and use the same keybinds/options on both machines. Well nixos has a 'config file' that lives above those window manager dotfiles from a heirerarchical perspective.
+To handle this cleanly, you can force-track the file locally without pushing it to the remote repository.
 
-Alright, so I'm going to start off by deleting a bunch of comments.
-I'll change the hostname here to `nixos-btw`, because I'm using NixOS, by the way.
-We'll remove the wpa supplicant option and just uncomment the NetworkManager block here. If you are using wifi, keep the wpa supplicant option, and remove the NetworkManager block instead.
-For my situation, I am going to chnage the timezone to America/Los Angeles.
-We can delete all these proxy settings comments.
+1. Generate the file (if you don't have it):  
+   During your NixOS installation, a file was generated at /etc/nixos/hardware-configuration.nix. Copy it into your repository folder.  
+   ```sh
+   cp /etc/nixos/hardware-configuration.nix .
+   ```
 
-#+begin_src nix
-{ config, lib, pkgs, ... }:
+2. Force-add the file to Git:  
+   This command tells Git to track the file locally, even if it's in .gitignore.  
+   ```sh
+   git add -f hardware-configuration.nix  
+   git commit -m "Add local hardware configuration"
+   ```
 
-{
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+### **Step 4: Build Your System\!**
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+Now you are ready to build the system. Run this command from inside your nixos-dotfiles directory:
 
-  services.getty.autologinUser = "tony";
+```sh
+# This is a custom command defined in the configuration.  
+# For the first time, you need to run the full command:  
+sudo nixos-rebuild switch --flake .#nixos-btw
 
-  networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
+# After the first build, you can use the custom alias:  
+nrs
+```
 
-  time.timeZone = "America/Los_Angeles";
+Nix will now build your entire system based on the configuration. Grab a coffee, and when it's done, you will have this exact desktop environment!
 
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-    xwayland.enable = true;
-  };
+## **⌨️ Keybindings**
 
-  users.users.tony = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    packages = with pkgs; [
-      tree
-    ];
-  };
+Here are some of the most important keybindings to get you started. SUPER is the Windows key.
 
-  programs.firefox.enable = true;
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    foot
-    waybar
-    kitty
-  ];
+| Keybinding | Action |
+| :---- | :---- |
+| SUPER + Enter | Open Terminal (Foot) |
+| SUPER + D | Open App Launcher (Rofi) |
+| SUPER + Q | Close active window |
+| SUPER + H / J / K / L | Move focus between windows |
+| SUPER + SHIFT \+ H / J / K / L | Move active window |
+| SUPER + [1-9] | Switch to workspace 1-9 |
+| SUPER + SHIFT + [1-9] | Move window to workspace 1-9 |
+| SUPER + T | Go to an empty workspace |
+| SUPER + M | Exit Hyprland (Log out) |
+| SUPER + Mouse Left | Move window with mouse |
+| SUPER + Mouse Right | Resize window with mouse |
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  system.stateVersion = "25.05";
+## **📂 Project Structure**
 
-}
+* `flake.nix`: The main entry point. It defines all inputs (Nixpkgs, Home Manager) and builds the final system.  
+* `configuration.nix`: System-wide settings (kernel, drivers, system services like Apache).  
+* `home.nix`: User-specific settings managed by Home Manager (dotfiles, user packages, Git config).  
+* `lib/globals.nix`: A central place for your personal variables.  
+* `config/`: Contains all the "dotfiles" for applications like Hyprland, Neovim, Rofi, etc. These are linked into your home directory automatically.
 
-#+end_src
-
-And we can use the getty auto login service above. Feel free to skip UWSM if you are not interested in it, as it is more or less deprecated.
-
-Alright we're ready to move on to our home.nix.
-
-*** home.nix
-Let's set up our home.nix. we'll heavily modify this after installing nixos and logging in for the first time.
-
-Just going to specify the home directory, enable git, and for a sanity check, let's setup a bash alias so we can confirm everything worked when we initially log in.
-
-vim home.nix
-#+begin_src nix
-{ config, pkgs, ... }:
-
-{
-  home.username = "tony";
-  home.homeDirectory = "/home/tony";
-  home.stateVersion = "25.05";
-  programs.git.enable = true;
-  programs.bash = {
-    enable = true;
-    shellAliases = {
-      btw = "echo i use nixos, btw";
-    };
-    profileExtra = ''
-      if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-        exec uwsm start -S hyprland-uwsm.desktop
-      fi
-    '';
-  };
-}
-#+end_src
-
-** Install:
-
-Alright we're finally ready to install this. We can do that with this command here, to specify the location of the flake.
-
-#+begin_src sh
-nixos-install --flake /mnt/etc/nixos#nixos-btw
-
-## type your password
-nixos-enter --root /mnt -c 'passwd tony'
-reboot
-#+end_src
-
-Make sure to create this password otherwise you wont be able to log in
-
-Let's boot into our system!
-
-* Create config file
-
-And we see we are instantly booted into hyprland. Awesome. Let's do a little tinkering here so that our monitor is actually the correct resolution. So we see its super Q to open a terminal, and lets vim the config file. We'll clean this up later, but for now, lets just change this one line here:
-
-To 1920x1080. For me, that should do it.
-
-Alright, I'm going to clone a couple of my dotfiles for my terminal, my hyprland and my waybar configurations. This video is more of a how to install hyprland on nixos video, and I'll show a really cool nix feature after.
-
-#+begin_src sh
-mkdir ~/nixos-dotfiles/config
-cd ~/nixos-dotfiles/config
-git clone https://github.com/tonybanters/hypr
-git clone https://github.com/tonybanters/waybay
-git clone https://github.com/tonybanters/foot
-#+end_src
-
-So in home.nix lets specify that our configs are going to come from config like so:
-
-#+begin_src nix
-home.file.".config/hypr".source = ./config/hypr;
-home.file.".config/waybar".source = ./config/waybar;
-home.file.".config/foot".source = ./config/foot;
-#+end_src
-
-And we can rebuild like so:
-
-#+begin_src
-sudo nixos-rebuild swith --flake ~/nixos-dotifles#hyprland-btw
-#+end_src
-
-* Nix Search TV
-So we messed around with nix shells already, lets actually show something that I use on a daily basis, called nix-search-tv. This guide was written up by my friend Emzy, and we can use it to install a great tool that helps us search for nix packages, and use commands to just jump right into a nix shell.
-
-So let's add this to our home manager packages list:
-
-#+begin_src nix
-#home.nix
-
-home.packages = with pkgs; [
-  (pkgs.writeShellApplication {
-    name = "ns";
-    runtimeInputs = with pkgs; [
-      fzf
-      nix-search-tv
-    ];
-    text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
-  })
-];
-
-#+end_src
-
-Now we can rebuild/switch again, and run ns to demo this. Incredible
-
-* Outro
-
-Alright, thats gonna be it for todays video. If you have any questions or recommendations on any other linux related content, as usual just drop a comment.
-
-It wouldn't be a proper video without an obligatory neofetch.
+Enjoy your new, fully declarative NixOS setup!
