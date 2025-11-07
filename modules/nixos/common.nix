@@ -22,6 +22,9 @@
     # Ép MESA sử dụng backend NVIDIA GBM
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_NAME_SOP_IGNORE_EGL = "1";
+
+    NIXOS_OZONE_WL = "1"; # Enable Wayland for Electron apps
+    WLR_NO_HARDWARE_CURSORS = "1"; # Fix cursor issues on NVIDIA
   };
 
   nix = {
