@@ -1,5 +1,6 @@
 { config, pkgs, globals, ... }:
 
 {
-  services.getty.autologinUser = globals.username;
+  # Autologin disabled - using greetd instead
+  # services.getty.autologinUser = globals.username;
 }
