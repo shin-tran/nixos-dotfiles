@@ -27,12 +27,12 @@
         sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nixos-dotfiles#$1
       }
     '';
-    profileExtra = ''
-      if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ];
-      then
-        exec uwsm start -S hyprland-uwsm.desktop
-      fi
-    '';
+    # profileExtra = ''
+    #   if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ];
+    #   then
+    #     exec uwsm start -S hyprland-uwsm.desktop
+    #   fi
+    # '';
   };
 
   programs.bash.enable = false;
