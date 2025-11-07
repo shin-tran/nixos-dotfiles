@@ -19,6 +19,10 @@
   home.username = globals.username;
   home.homeDirectory = "/home/${globals.username}";
   home.stateVersion = globals.stateVersion;
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
 
   home.packages = with pkgs; [
     # Development tools
