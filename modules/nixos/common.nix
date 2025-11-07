@@ -5,7 +5,7 @@
 
   users.users.${globals.username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "input" ];
+    extraGroups = [ "wheel" "video" "input" "seat" ];
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
   };
@@ -17,6 +17,12 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+
+  environment.variables = {
+    # Ép MESA sử dụng backend NVIDIA GBM
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_NAME_SOP_IGNORE_EGL = "1";
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
