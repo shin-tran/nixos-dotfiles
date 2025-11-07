@@ -3,7 +3,8 @@
 {
   # Input method for Vietnamese (and other languages)
   i18n.inputMethod = {
-    enabled = "ibus";
+    enable = true;
+    type = "ibus";
     ibus.engines = with pkgs.ibus-engines; [
       bamboo  # Vietnamese input method
       # unikey  # Alternative Vietnamese input (if needed)
