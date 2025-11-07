@@ -14,7 +14,7 @@
       nerd-fonts._0xproto
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       font-awesome
     ];
   };
