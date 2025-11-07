@@ -10,5 +10,6 @@
     ./audio.nix
     ./xserver.nix
     ./ibus.nix
+    ./misc.nix
   ];
 }

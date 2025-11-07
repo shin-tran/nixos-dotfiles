@@ -4,9 +4,7 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../../modules/nixos/common.nix
-    ../../modules/nixos/hyprland.nix
-    ../../modules/nixos/packages.nix
+    ../../modules/nixos/default.nix
 
     ../../modules/nixos/services/default.nix
   ];

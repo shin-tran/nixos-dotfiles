@@ -5,16 +5,19 @@
 
   users.users.${globals.username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "input" "seat" ];
+    extraGroups = [
+      "seat"
+      "wheel"           # Sudo access
+      "video"           # GPU/graphics
+      "input"           # Input devices
+      "audio"           # Audio devices
+      "networkmanager"  # Network management
+      "docker"          # Docker containers
+      "adbusers"        # Android debugging
+    ];
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
   };
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.fira-code
-    nerd-fonts.hack
-  ];
 
   nixpkgs.config.allowUnfree = true;
 
