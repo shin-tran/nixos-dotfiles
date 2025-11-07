@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./nvidia.nix
     ./autologin.nix
     ./networking.nix
     ./hyprpaper.nix
