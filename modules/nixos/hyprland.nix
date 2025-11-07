@@ -2,11 +2,12 @@
 
 {
   services.seatd.enable = true;
-  # programs.hyprland = {
-  #   enable = true;
-  #   withUWSM = false;
-  #   xwayland.enable = true;
-  # };
+
+  programs.hyprland = {
+    enable = true;
+    withUWSM = false;
+    xwayland.enable = true;
+  };
 
   # Display manager for Hyprland
   services.greetd = {
