@@ -21,7 +21,7 @@
       exec-once = [
         "waybar &"
         # "hyprpaper &"
-        "ibus-daemon -drx &"
+        "fcitx5 &"
       ];
 
       # General

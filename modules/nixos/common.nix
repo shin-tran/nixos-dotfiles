@@ -19,7 +19,10 @@
     ignoreShellProgramCheck = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    nvidia.acceptLicense = true;
+  };
 
   environment.variables = {
     # Ép MESA sử dụng backend NVIDIA GBM

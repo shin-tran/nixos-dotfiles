@@ -50,5 +50,7 @@
     btop
     htop
     fastfetch
+
+    fcitx5-configtool
   ];
 }

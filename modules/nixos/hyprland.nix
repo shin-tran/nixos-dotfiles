@@ -11,13 +11,18 @@
 
   # Display manager for Hyprland
   services.greetd = {
-    enable = true;
+    enable = false;
     settings = {
       default_session = {
         command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland";
         user = "greeter";
       };
     };
+  };
+
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true; # Cố gắng chạy SDDM trên Wayland
   };
 
   xdg.portal = {

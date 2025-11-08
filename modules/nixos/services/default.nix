@@ -9,7 +9,7 @@
     ./printing.nix
     ./audio.nix
     ./xserver.nix
-    ./ibus.nix
+    ./fcitx5.nix
     ./misc.nix
   ];
 }

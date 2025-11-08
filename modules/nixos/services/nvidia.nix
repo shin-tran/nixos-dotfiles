@@ -10,7 +10,7 @@
       enable = false;
       finegrained = false;
     };
-    prime.sync.enable = true;
+    prime.sync.enable = false;
 
     nvidiaSettings = true;
     # package = config.boot.kernelPackages.nvidiaPackages.production;
