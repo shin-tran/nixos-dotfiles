@@ -4,7 +4,7 @@
   time.timeZone = "Asia/Ho_Chi_Minh";
 
   programs.dconf.enable = true;
-  # security.pam.services.i3lock.enable = true;
+  security.pam.services.i3lock.enable = true;
 
   users.users.${globals.username} = {
     isNormalUser = true;
@@ -32,8 +32,8 @@
     # GBM_BACKEND = "nvidia-drm";
     # __GLX_VENDOR_NAME_SOP_IGNORE_EGL = "1";
 
-    NIXOS_OZONE_WL = "1"; # Enable Wayland for Electron apps
-    WLR_NO_HARDWARE_CURSORS = "1"; # Fix cursor issues on NVIDIA
+    # NIXOS_OZONE_WL = "1"; # Enable Wayland for Electron apps
+    # WLR_NO_HARDWARE_CURSORS = "1"; # Fix cursor issues on NVIDIA
   };
 
   nix = {
