@@ -4,7 +4,7 @@
   imports = [
     ./common.nix
     ./fonts.nix
-    ./hyprland.nix
+    # ./hyprland.nix
     ./packages.nix
   ];
 }

@@ -6,15 +6,14 @@
       enable = true;
       xkb.layout = "us";
       videoDrivers = [ "nvidia" ];
+
+      windowManager.i3.enable = true;
     };
 
-    displayManager = {
-      sddm = {
-        enable = true;
-        wayland.enable = true; # Cố gắng chạy SDDM trên Wayland
-      };
+    displayManager.defaultSession = "none+i3";
 
-      defaultSession = "hyprland";
-    };
+    # displayManager = {
+    #   startx.enable = true;
+    # };
   };
 }

@@ -13,7 +13,7 @@
     prime.sync.enable = false;
 
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
-    # package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
+    # package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
   };
 }

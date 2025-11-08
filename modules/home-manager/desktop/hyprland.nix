@@ -15,6 +15,11 @@
         "HYPRCURSOR_SIZE,24"
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
+
+        # "GBM_BACKEND, nvidia-drm"
+        # "__GLX_VENDOR_NAME_SOP_IGNORE_EGL,1"
+        "WLR_NO_HARDWARE_CURSORS,1"
+        "NIXOS_OZONE_WL,1"
       ];
 
       # Autostart

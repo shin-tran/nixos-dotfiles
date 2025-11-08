@@ -20,25 +20,25 @@
     # Wayland/Hyprland interface
     waybar
     hyprpaper
-    wofi               # App launcher
-    dunst              # Notification daemon
-    wl-clipboard       # Clipboard manager
+    wofi # App launcher
+    dunst # Notification daemon
+    wl-clipboard # Clipboard manager
 
     # Screenshot & recording
-    grim               # Screenshot
-    slurp              # Screen area selector
-    swappy             # Screenshot editor
-    wf-recorder        # Screen recording
+    grim # Screenshot
+    slurp # Screen area selector
+    swappy # Screenshot editor
+    wf-recorder # Screen recording
 
     # System tools
-    brightnessctl      # Brightness control
-    pamixer            # Volume control (CLI)
-    pavucontrol        # Volume control (GUI)
-    networkmanagerapplet  # Network manager GUI
+    brightnessctl # Brightness control
+    pamixer # Volume control (CLI)
+    pavucontrol # Volume control (GUI)
+    networkmanagerapplet # Network manager GUI
 
     # File managers
-    xfce.thunar             # GUI file manager
-    lf                 # Terminal file manager
+    xfce.thunar # GUI file manager
+    lf # Terminal file manager
     # kdePackages.dolphin
 
     # Search tools (needed for nvim telescope)
@@ -52,5 +52,6 @@
     fastfetch
 
     qt6Packages.fcitx5-configtool
+    pkgs.xorg.xinit
   ];
 }
