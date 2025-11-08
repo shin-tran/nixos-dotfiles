@@ -20,11 +20,6 @@
     };
   };
 
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true; # Cố gắng chạy SDDM trên Wayland
-  };
-
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [

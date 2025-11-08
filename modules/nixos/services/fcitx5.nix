@@ -4,7 +4,7 @@
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
-    engines = [ "unikey" ];
+    fcitx5.addons = [ pkgs.qt6Packages.fcitx5-unikey ];
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
