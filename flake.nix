@@ -15,12 +15,12 @@
       globals = import ./lib/globals.nix;
     in
     {
-      nixosConfigurations."desktop" = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.${globals.hostname} = nixpkgs.lib.nixosSystem {
         system = globals.system;
         specialArgs = { inherit globals; };
 
         modules = [
-          ./hosts/desktop/configuration.nix
+          ./hosts/${globals.hostname}/configuration.nix
 
           home-manager.nixosModules.home-manager
           {
@@ -29,7 +29,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
 
-              users.${globals.username} = import ./hosts/desktop/home.nix;
+              users.${globals.username} = import ./hosts/${globals.hostname}/home.nix;
 
               backupFileExtension = "backup";
             };
