@@ -19,4 +19,6 @@
       touchpad.accelProfile = "flat";
     };
   };
+
+  security.pam.services.greetd.enableGnomeKeyring = true;
 }

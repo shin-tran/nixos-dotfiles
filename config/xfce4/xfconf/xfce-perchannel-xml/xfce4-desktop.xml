@@ -5,6 +5,8 @@
     <property name="screen0" type="empty">
       <property name="monitorHDMI-0" type="empty">
         <property name="workspace0" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="backdrop-cycle-enable" type="bool" value="false"/>
           <property name="last-image" type="string" value="/home/ngoc/nixos-dotfiles/walls/Anime-Girl-Rain.png"/>
         </property>
       </property>

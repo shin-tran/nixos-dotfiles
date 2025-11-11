@@ -30,25 +30,6 @@
 
   # Cấu hình dconf cho XFCE
   dconf.settings = {
-    "xfce4-panel/panels/panel-1" = {
-      position = "p=6;x=0;y=0";
-      length = 100;
-      size = 32;
-    };
-
-    "xfce4-desktop" = {
-      backdrop-cycle-enable = false;
-      color-style = 0;
-    };
-
-    "xfce4-power-manager" = {
-      show-tray-icon = true;
-    };
-
-    "xfce4-notifyd" = {
-      theme = "Default";
-      initial-opacity = 0.9;
-    };
   };
 
   # Tự động khởi động các ứng dụng
