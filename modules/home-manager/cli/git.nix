@@ -20,6 +20,12 @@
       };
     };
 
+    settings = {
+      safe.directory = [
+        "${config.home.homeDirectory}/nixos-dotfiles"
+      ];
+    };
+
     ignores = [ ".DS_Store" "*.swp" "*~" ];
 
     # Bạn cũng có thể kích hoạt signing ở đây

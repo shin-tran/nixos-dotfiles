@@ -67,6 +67,7 @@
   xdg.configFile."xfce4" = {
     source = ../../../config/xfce4;
     recursive = true;
+    force = true;
   };
 
   # Services

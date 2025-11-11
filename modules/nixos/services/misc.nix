@@ -10,6 +10,8 @@
     power-profiles-daemon.enable = true;
     openssh.enable = true;
 
+    gnome.gnome-keyring.enable = true;
+
     # Không gia tốc - thường tốt cho chơi game FPS
     libinput = {
       enable = true;
