@@ -13,8 +13,8 @@
     xfce.xfce4-settings
     xfce.thunar-volman
     xfce.thunar-archive-plugin
-    xfce.ristretto  # Trình xem ảnh
-    xfce.mousepad   # Trình soạn thảo văn bản
+    xfce.ristretto # Trình xem ảnh
+    xfce.mousepad # Trình soạn thảo văn bản
 
     # Tiện ích (rofi, feh, scrot dành riêng cho XFCE/X11)
     rofi
@@ -29,8 +29,7 @@
   };
 
   # Cấu hình dconf cho XFCE
-  dconf.settings = {
-  };
+  dconf.settings = { };
 
   # Tự động khởi động các ứng dụng
   home.file.".config/autostart/fcitx5.desktop" = {
@@ -46,7 +45,7 @@
   };
 
   xdg.configFile."xfce4" = {
-    source = ../../../config/xfce4;
+    source = config.lib.file.mkOutOfStoreSymlink ../../../config/xfce4;
     recursive = true;
     force = true;
   };
@@ -54,9 +53,9 @@
   # Services
   services = {
     # Notification daemon
-    dunst.enable = false;  # Sử dụng xfce4-notifyd thay vì dunst
+    dunst.enable = false; # Sử dụng xfce4-notifyd thay vì dunst
 
     # Clipboard manager
-    clipmenu.enable = false;  # Sử dụng xfce4-clipman
+    clipmenu.enable = false; # Sử dụng xfce4-clipman
   };
 }
