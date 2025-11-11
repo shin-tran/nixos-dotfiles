@@ -7,13 +7,23 @@
       xkb.layout = "us";
       videoDrivers = [ "nvidia" ];
 
-      windowManager.i3.enable = true;
+      desktopManager.xfce.enable = true;
     };
 
-    displayManager.defaultSession = "none+i3";
+    displayManager = {
+      lightdm.enable = true;
+      defaultSession = "xfce";
 
-    # displayManager = {
-    #   startx.enable = true;
-    # };
+      lightdm.greeters.gtk = {
+        enable = true;
+        theme.name = "Adwaita-dark";
+        iconTheme.name = "Adwaita";
+        extraConfig = ''
+          [greeter]
+          theme-name = Adwaita-dark
+          icon-theme-name = Adwaita
+        '';
+      };
+    };
   };
 }

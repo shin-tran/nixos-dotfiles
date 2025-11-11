@@ -14,24 +14,24 @@
     tree
 
     # Terminal emulators
-    foot
+    # foot # Wayland terminal - không cần cho XFCE
     kitty
 
-    # Wayland/Hyprland interface
-    waybar
-    hyprpaper
-    wofi # App launcher
-    dunst # Notification daemon
-    wl-clipboard # Clipboard manager
+    # Wayland/Hyprland interface - COMMENT TẠM THỜI (chỉ dùng cho Wayland/Hyprland)
+    # waybar
+    # hyprpaper
+    # wofi # App launcher
+    # dunst # Notification daemon (XFCE dùng xfce4-notifyd)
+    # wl-clipboard # Clipboard manager
 
-    # Screenshot & recording
-    grim # Screenshot
-    slurp # Screen area selector
-    swappy # Screenshot editor
-    wf-recorder # Screen recording
+    # Screenshot & recording - CHỈ CHO WAYLAND
+    # grim # Screenshot
+    # slurp # Screen area selector
+    # swappy # Screenshot editor
+    # wf-recorder # Screen recording
 
     # System tools
-    brightnessctl # Brightness control
+    # brightnessctl # Brightness control - có thể không cần cho desktop
     pamixer # Volume control (CLI)
     pavucontrol # Volume control (GUI)
     networkmanagerapplet # Network manager GUI
