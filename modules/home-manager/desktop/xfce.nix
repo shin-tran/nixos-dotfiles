@@ -26,19 +26,6 @@
   # Cấu hình XFCE
   xsession = {
     enable = true;
-
-    windowManager.xfce = {
-      enable = true;
-    };
-  };
-
-  # Cấu hình file manager Thunar
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-volman
-    ];
   };
 
   # Cấu hình dconf cho XFCE
@@ -47,14 +34,6 @@
       position = "p=6;x=0;y=0";
       length = 100;
       size = 32;
-    };
-
-    "xfce4-keyboard-shortcuts" = {
-      "custom/Super_L" = "xfce4-popup-whiskermenu";
-      "custom/<Super>Return" = "xfce4-terminal";
-      "custom/<Super>d" = "rofi -show drun -show-icons";
-      "custom/<Super>e" = "thunar";
-      "custom/Print" = "xfce4-screenshooter";
     };
 
     "xfce4-desktop" = {
@@ -85,24 +64,9 @@
     '';
   };
 
-  # Cấu hình background
-  home.file.".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml" = {
-    text = ''
-      <?xml version="1.0" encoding="UTF-8"?>
-      <channel name="xfce4-desktop" version="1.0">
-        <property name="backdrop" type="empty">
-          <property name="screen0" type="empty">
-            <property name="monitoreDP-1" type="empty">
-              <property name="workspace0" type="empty">
-                <property name="color-style" type="int" value="0"/>
-                <property name="image-style" type="int" value="5"/>
-                <property name="last-image" type="string" value="${config.home.homeDirectory}/nixos-dotfiles/walls/Anime-Girl-Rain.png"/>
-              </property>
-            </property>
-          </property>
-        </property>
-      </channel>
-    '';
+  xdg.configFile."xfce4" = {
+    source = ../../../config/xfce4;
+    recursive = true;
   };
 
   # Services

@@ -38,7 +38,7 @@
 
     # File managers
     xfce.thunar # GUI file manager
-    lf # Terminal file manager
+    # lf # Terminal file manager
     # kdePackages.dolphin
 
     # Search tools (needed for nvim telescope)
