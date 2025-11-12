@@ -1,5 +1,7 @@
 { config, pkgs, lib, ... }:
-
+let
+  userConfigDir = "${config.home.homeDirectory}/.config";
+in
 {
   home.packages = with pkgs; [
     # XFCE applications
@@ -48,33 +50,14 @@
     '';
   };
 
-  home.activation.symlinkXfceConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    sourceDir="${config.home.homeDirectory}/nixos-dotfiles/config/xfce4"
-    targetLink="${config.home.homeDirectory}/.config"
+  # Tự động tạo symlink cho folder config
+  home.activation.symlinkConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    export NIXOS_DOTFILES_DIR="${config.home.homeDirectory}/nixos-dotfiles"
+    export USER_CONFIG_DIR="${userConfigDir}"
 
-    verboseEcho "Ensuring parent directory $HOME/.config exists"
-    run mkdir -p $VERBOSE_ARG "$(dirname "$targetLink")"
+    export CONFIG_NAMES="xfce4 rofi"
 
-    # -s: symbolic link
-    # -f: force (xóa link/thư mục cũ nếu có)
-    # -n: đối xử với đích như một file
-    verboseEcho "Linking $sourceDir to $targetLink"
-    run ln -sfn $VERBOSE_ARG "$sourceDir" "$targetLink"
-  '';
-
-  home.activation.symlinkRofiConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    sourceDir="${config.home.homeDirectory}/nixos-dotfiles/config/rofi"
-    targetLink="${config.home.homeDirectory}/.config"
-
-    verboseEcho "Ensuring parent directory $HOME/.config exists"
-    run mkdir -p $VERBOSE_ARG "$(dirname "$targetLink")"
-
-    if [ -d "$sourceDir" ]; then
-      verboseEcho "Linking $sourceDir to $targetLink"
-      run ln -sfn $VERBOSE_ARG "$sourceDir" "$targetLink"
-    else
-      verboseEcho "Rofi config source $sourceDir not found, skipping link."
-    fi
+    source ../../../scripts/symlink-configs.sh
   '';
 
   services = {
