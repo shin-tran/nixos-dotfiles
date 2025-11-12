@@ -1,4 +1,4 @@
-{ config, pkgs, globals, ... }:
+{ pkgs, globals, ... }:
 
 {
   imports = [
@@ -19,13 +19,17 @@
     };
     packages = with pkgs; [
       # Development tools
-      nil nixpkgs-fmt nodejs bun
+      nil
+      nixpkgs-fmt
+      nodejs
+      bun
 
       nixd     # Language server cho Nix
       nixfmt   # Để format code Nix
 
       # User applications
-      nitch google-chrome
+      nitch
+      google-chrome
     ];
   };
 
