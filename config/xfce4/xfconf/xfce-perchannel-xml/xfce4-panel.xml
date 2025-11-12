@@ -21,8 +21,6 @@
         <value type="int" value="30"/>
         <value type="int" value="17"/>
         <value type="int" value="29"/>
-        <value type="int" value="23"/>
-        <value type="int" value="5"/>
         <value type="int" value="6"/>
         <value type="int" value="9"/>
         <value type="int" value="10"/>
@@ -51,9 +49,6 @@
       <property name="miniature-view" type="bool" value="false"/>
       <property name="numbering" type="bool" value="false"/>
       <property name="workspace-scrolling" type="bool" value="true"/>
-    </property>
-    <property name="plugin-5" type="string" value="separator">
-      <property name="style" type="uint" value="1"/>
     </property>
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
@@ -126,7 +121,6 @@
       <property name="view-mode" type="int" value="1"/>
       <property name="launcher-show-description" type="bool" value="false"/>
     </property>
-    <property name="plugin-23" type="string" value="netload"/>
     <property name="plugin-25" type="string" value="systemload">
       <property name="network" type="empty">
         <property name="enabled" type="bool" value="false"/>

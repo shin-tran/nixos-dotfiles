@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -12,10 +12,6 @@
     unzip
     zip
     tree
-
-    # Terminal emulators
-    # foot # Wayland terminal - không cần cho XFCE
-    kitty
 
     # Wayland/Hyprland interface - COMMENT TẠM THỜI (chỉ dùng cho Wayland/Hyprland)
     # waybar
