@@ -14,6 +14,7 @@
     shellAliases = {
       btw = "echo i use nixos, btw";
       vim = "nvim";
+      ncg = "sudo nix-collect-garbage -d";
     };
     initContent = ''
       nitch
@@ -25,6 +26,15 @@
           return 1
         fi
         sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nixos-dotfiles#$1
+      }
+
+      function nrb() {
+        if [ -z "$1" ]; then
+          echo "Lỗi: Vui lòng cung cấp tên host."
+          echo "Ví dụ: nrs desktop"
+          return 1
+        fi
+        sudo nixos-rebuild build --flake ${config.home.homeDirectory}/nixos-dotfiles#$1
       }
     '';
     # profileExtra = ''

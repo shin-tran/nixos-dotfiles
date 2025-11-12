@@ -23,6 +23,12 @@
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = true;
     };
+
+    gtk3.extraCss = ''
+      .xfce4-panel {
+        background-color: rgba(0, 0, 0, 0);
+      }
+    '';
   };
 
   xdg.configFile."gtk-3.0/settings.ini".text = ''

@@ -51,15 +51,30 @@
   home.activation.symlinkXfceConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     sourceDir="${config.home.homeDirectory}/nixos-dotfiles/config/xfce4"
     targetLink="${config.home.homeDirectory}/.config"
-    
+
     verboseEcho "Ensuring parent directory $HOME/.config exists"
     run mkdir -p $VERBOSE_ARG "$(dirname "$targetLink")"
-    
+
     # -s: symbolic link
     # -f: force (xóa link/thư mục cũ nếu có)
     # -n: đối xử với đích như một file
     verboseEcho "Linking $sourceDir to $targetLink"
     run ln -sfn $VERBOSE_ARG "$sourceDir" "$targetLink"
+  '';
+
+  home.activation.symlinkRofiConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    sourceDir="${config.home.homeDirectory}/nixos-dotfiles/config/rofi"
+    targetLink="${config.home.homeDirectory}/.config"
+
+    verboseEcho "Ensuring parent directory $HOME/.config exists"
+    run mkdir -p $VERBOSE_ARG "$(dirname "$targetLink")"
+
+    if [ -d "$sourceDir" ]; then
+      verboseEcho "Linking $sourceDir to $targetLink"
+      run ln -sfn $VERBOSE_ARG "$sourceDir" "$targetLink"
+    else
+      verboseEcho "Rofi config source $sourceDir not found, skipping link."
+    fi
   '';
 
   services = {

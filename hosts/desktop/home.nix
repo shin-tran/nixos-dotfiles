@@ -32,4 +32,6 @@
       })
     ];
   };
+
+  fonts.fontconfig.enable = true;
 }
