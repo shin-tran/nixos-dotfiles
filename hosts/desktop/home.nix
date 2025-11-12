@@ -21,15 +21,11 @@
       # Development tools
       nil nixpkgs-fmt nodejs bun
 
+      nixd     # Language server cho Nix
+      nixfmt   # Để format code Nix
+
       # User applications
       nitch google-chrome
-
-      # Custom nix search script
-      (writeShellApplication {
-        name = "ns";
-        runtimeInputs = [ fzf (nix-search-tv.overrideAttrs { env.GOEXPERIMENT = "jsonv2"; }) ];
-        text = ''exec "${nix-search-tv.src}/nixpkgs.sh" "$@"'';
-      })
     ];
   };
 
