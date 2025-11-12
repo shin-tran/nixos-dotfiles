@@ -3,8 +3,9 @@
 {
   imports = [
     ./common.nix
+    ./users.nix
     ./fonts.nix
-    # ./hyprland.nix
     ./packages.nix
+    # ./hyprland.nix
   ];
 }

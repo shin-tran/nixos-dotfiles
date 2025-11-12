@@ -57,7 +57,7 @@ in
 
     export CONFIG_NAMES="xfce4 rofi"
 
-    source ../../../scripts/symlink-configs.sh
+    source $NIXOS_DOTFILES_DIR/scripts/symlink-configs.sh
   '';
 
   services = {
