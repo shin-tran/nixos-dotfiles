@@ -4,8 +4,12 @@
   home.packages = with pkgs; [
     # XFCE applications
     xfce.xfce4-terminal
-    xfce.xfce4-taskmanager
+    xfce.xfce4-whiskermenu-plugin
+    xfce.xfce4-netload-plugin
+    xfce.xfce4-systemload-plugin
+    xfce.xfce4-fsguard-plugin
     xfce.xfce4-clipman-plugin
+    xfce.xfce4-taskmanager
     xfce.xfce4-pulseaudio-plugin
     xfce.xfce4-screenshooter
     xfce.xfce4-notifyd
