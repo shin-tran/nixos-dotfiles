@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   userConfigDir = "${config.home.homeDirectory}/.config";
 in
@@ -55,7 +60,7 @@ in
     export NIXOS_DOTFILES_DIR="${config.home.homeDirectory}/nixos-dotfiles"
     export USER_CONFIG_DIR="${userConfigDir}"
 
-    export CONFIG_NAMES="xfce4 rofi"
+    export CONFIG_NAMES="xfce4 rofi fcitx5"
 
     source $NIXOS_DOTFILES_DIR/scripts/symlink-configs.sh
   '';

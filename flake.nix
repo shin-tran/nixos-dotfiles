@@ -8,29 +8,16 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
-    };
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
+  outputs = { nixpkgs, home-manager, ... }:
     let
       globals = import ./lib/globals.nix;
     in
     {
       nixosConfigurations.${globals.hostname} = nixpkgs.lib.nixosSystem {
         system = globals.system;
-        specialArgs = {
-          inherit globals inputs;
-          pkgs = import nixpkgs {
-            system = globals.system;
-            config = {
-              allowUnfree = true;
-              nvidia.acceptLicense = true;
-            };
-          };
-         };
+        specialArgs = { inherit globals; };
 
         modules = [
           ./hosts/${globals.hostname}/configuration.nix
@@ -38,7 +25,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = { inherit globals inputs; };
+              extraSpecialArgs = { inherit globals; };
               useGlobalPkgs = true;
               useUserPackages = true;
 
