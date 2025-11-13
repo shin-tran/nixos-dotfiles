@@ -5,5 +5,6 @@
     ./git.nix
     ./zsh.nix
     ./ssh.nix
+    ./gpg.nix
   ];
 }
