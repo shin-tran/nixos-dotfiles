@@ -30,6 +30,8 @@
       # User applications
       nitch
       google-chrome
+      firefox
+      obsidian
     ];
   };
 
