@@ -7,6 +7,6 @@
   git = {
     name = "shin-tran";
     email = "ngoc.shintrann@gmail.com";
-    signingKey = "";
+    signingKeyPath = "~/.ssh/shintran.pub";
   };
 }

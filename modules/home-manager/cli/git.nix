@@ -28,10 +28,10 @@
 
     ignores = [ ".DS_Store" "*.swp" "*~" ];
 
-    # Bạn cũng có thể kích hoạt signing ở đây
-    # signing = {
-    #   key = globals.git.signingKey; # (Bạn cần thêm signingKey vào globals.nix)
-    #   signByDefault = true;
-    # };
+    signing = {
+      key = globals.git.signingKeyPath;
+      signByDefault = true;
+      format = "ssh";
+    };
   };
 }
