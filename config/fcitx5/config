@@ -12,7 +12,6 @@ ModifierOnlyKeyTimeout=250
 
 [Hotkey/TriggerKeys]
 0=Control+Shift+Shift_L
-1=Hangul
 
 [Hotkey/ActivateKeys]
 0=Hangul_Hanja

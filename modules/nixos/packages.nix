@@ -48,5 +48,10 @@
 
     qt6Packages.fcitx5-configtool
     pkgs.xorg.xinit
+
+    # Themes
+    whitesur-cursors
+    dracula-theme
+    dracula-icon-theme
   ];
 }

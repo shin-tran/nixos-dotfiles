@@ -4,10 +4,6 @@
   home.packages = with pkgs; [
     adwaita-icon-theme
     gnome-themes-extra
-
-    whitesur-cursors
-    dracula-theme
-    dracula-icon-theme
   ];
 
   home.pointerCursor = {
@@ -63,28 +59,6 @@
     '';
   };
 
-  xdg.configFile."gtk-3.0/settings.ini".text = ''
-    [Settings]
-    gtk-theme-name=Adwaita-dark
-    gtk-icon-theme-name=Adwaita
-    gtk-cursor-theme-name=WhiteSur-cursors
-    gtk-cursor-theme-size=24
-    gtk-font-name=Inter 16
-    gtk-application-prefer-dark-theme=1
-  '';
-
-  xdg.configFile."gtk-4.0/settings.ini".text = ''
-    [Settings]
-    gtk-theme-name=Adwaita-dark
-    gtk-icon-theme-name=Adwaita
-    gtk-cursor-theme-name=WhiteSur-cursors
-    gtk-cursor-theme-size=24
-    gtk-font-name=Inter 16
-    gtk-application-prefer-dark-theme=1
-  '';
-
   home.sessionVariables = {
-    XCURSOR_THEME = "WhiteSur-cursors";
-    XCURSOR_SIZE = "24";
   };
 }
