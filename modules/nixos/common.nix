@@ -6,8 +6,8 @@
   programs.dconf.enable = true;
 
   nixpkgs.config = {
-    allowUnfree = true;
-    nvidia.acceptLicense = true;
+    #allowUnfree = true;
+    #nvidia.acceptLicense = true;
   };
 
   environment.variables = {

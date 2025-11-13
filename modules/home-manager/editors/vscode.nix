@@ -1,8 +1,7 @@
-{ config, pkgs, globals, ... }:
+{ config, pkgs, globals, inputs, ... }:
 
 let
   flakeDir = config.home.homeDirectory + "/nixos-dotfiles";
-  flakeInputs = (builtins.getFlake flakeDir).inputs;
   flakeSelf = "git+file://${flakeDir}";
 in
 {
@@ -12,6 +11,37 @@ in
 
     profiles = {
       default = {
+extensions = let
+          t =
+            inputs.nix-vscode-extensions.extensions.${globals.system}.forVSCodeVersion
+              config.programs.vscode.package.version;
+          p = t.vscode-marketplace;
+          pr = t.vscode-marketplace-release;
+        in
+        [
+          p.aaron-bond.better-comments
+          p.adpyke.codesnap
+          p.christian-kohler.path-intellisense
+          p.davidanson.vscode-markdownlint
+          p.dotenv.dotenv-vscode
+          p.dracula-theme.theme-dracula
+          p.esbenp.prettier-vscode
+          p.foxundermoon.shell-format
+          #p.github.copilot
+          #p.github.copilot-chat
+          p.mkxml.vscode-filesize
+          p.mrmlnc.vscode-apache
+          p.pkief.material-icon-theme
+          p.streetsidesoftware.code-spell-checker
+          p.streetsidesoftware.code-spell-checker-vietnamese
+          p.usernamehw.errorlens
+          p.visualstudioexptteam.intellicode-api-usage-examples
+          p.visualstudioexptteam.vscodeintellicode
+          p.vscjava.vscode-java-pack
+          p.yzhang.markdown-all-in-one
+          p.bbenoist.nix
+          p.redhat.vscode-xml
+        ];
 
         userSettings = {
         "nix.enableLanguageServer" = true;

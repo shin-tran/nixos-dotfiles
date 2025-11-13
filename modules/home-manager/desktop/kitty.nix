@@ -1,4 +1,4 @@
-{ }:
+{ ... }:
 
 {
   programs.kitty = {
@@ -8,6 +8,6 @@
       size = 10;
     };
     shellIntegration.enableZshIntegration = true;
-    theme = "Catppuccin-Macchiato";
+    themeFile = "Catppuccin-Macchiato";
   };
 }

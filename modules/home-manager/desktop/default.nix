@@ -3,6 +3,7 @@
 {
   imports = [
     ./theme.nix
+    ./kitty.nix
     # ./hyprland.nix
     # ./waybar.nix
     # ./wofi.nix
