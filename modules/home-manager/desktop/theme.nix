@@ -6,6 +6,8 @@
     gnome-themes-extra
 
     whitesur-cursors
+    dracula-theme
+    dracula-icon-theme
   ];
 
   home.pointerCursor = {
@@ -19,8 +21,13 @@
 
   gtk = {
     enable = true;
-    theme.name = "Adwaita-dark";
-    iconTheme.name = "Adwaita";
+
+    theme = {
+      name = "Dracula";
+      package = pkgs.dracula-theme;
+    };
+
+    iconTheme.name = "Dracula";
 
     font = {
       name = "Inter";
@@ -39,6 +46,20 @@
       .xfce4-panel {
         background-color: rgba(0, 0, 0, 0);
       }
+
+      #pager-4 button:checked {
+        background-image: none;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-bottom: 3px solid #cf58f0ff;
+        color: #ffffff;
+        font-weight: bold;
+        border-radius: 0;
+      }
+
+      #pager-4 button:hover {
+        background-image: none;
+        background-color: rgba(255, 255, 255, 0.4);
+      }
     '';
   };
 
@@ -48,7 +69,7 @@
     gtk-icon-theme-name=Adwaita
     gtk-cursor-theme-name=WhiteSur-cursors
     gtk-cursor-theme-size=24
-    gtk-font-name=Inter 12
+    gtk-font-name=Inter 16
     gtk-application-prefer-dark-theme=1
   '';
 
@@ -58,7 +79,7 @@
     gtk-icon-theme-name=Adwaita
     gtk-cursor-theme-name=WhiteSur-cursors
     gtk-cursor-theme-size=24
-    gtk-font-name=Inter 12
+    gtk-font-name=Inter 16
     gtk-application-prefer-dark-theme=1
   '';
 
