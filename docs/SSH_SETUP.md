@@ -82,7 +82,7 @@ Update the file content to match the following structure:
 
     # 2. Configure Signing
     signing = {
-      key = "~/.ssh/id_ed25519.pub"; # Path to your PUBLIC key
+      key = globals.git.signingKeyPath # e.g., "~/.ssh/id_ed25519.pub"
       signByDefault = true;          # Automatically sign all commits
       format = "ssh";                # Use SSH format instead of GPG
     };
