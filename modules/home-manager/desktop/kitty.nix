@@ -5,7 +5,7 @@
     enable = true;
     font = {
       name = "JetBrainsMono Nerd Font";
-      size = 10;
+      size = 12;
     };
     shellIntegration.enableZshIntegration = true;
     themeFile = "Catppuccin-Macchiato";

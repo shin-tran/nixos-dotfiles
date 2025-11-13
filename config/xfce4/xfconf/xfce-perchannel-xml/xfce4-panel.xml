@@ -38,11 +38,13 @@
   <property name="plugins" type="empty">
     <property name="plugin-2" type="string" value="tasklist">
       <property name="grouping" type="uint" value="1"/>
-      <property name="flat-buttons" type="bool" value="false"/>
-      <property name="show-labels" type="bool" value="true"/>
+      <property name="flat-buttons" type="bool" value="true"/>
+      <property name="show-labels" type="bool" value="false"/>
       <property name="show-handle" type="bool" value="false"/>
       <property name="middle-click" type="uint" value="1"/>
       <property name="include-all-workspaces" type="bool" value="true"/>
+      <property name="show-tooltips" type="bool" value="true"/>
+      <property name="sort-order" type="uint" value="3"/>
     </property>
     <property name="plugin-4" type="string" value="pager">
       <property name="rows" type="uint" value="1"/>
@@ -76,7 +78,7 @@
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
       <property name="mpris-players" type="string" value="firefox.instance109543;firefox.instance1484;firefox.instance1505;firefox.instance1629;firefox.instance18036;firefox.instance2405;firefox.instance7700;firefox.instance99398;plasma-browser-integration;spotify"/>
-      <property name="known-players" type="string" value="Chrome"/>
+      <property name="known-players" type="string" value="Chrome;firefox"/>
     </property>
     <property name="plugin-9" type="string" value="power-manager-plugin"/>
     <property name="plugin-10" type="string" value="notification-plugin"/>
@@ -111,6 +113,8 @@
     <property name="plugin-7" type="string" value="whiskermenu">
       <property name="button-icon" type="string" value="/home/ngoc/nixos-dotfiles/walls/nixos-logo.png"/>
       <property name="recent" type="array">
+        <value type="string" value="btop.desktop"/>
+        <value type="string" value="htop.desktop"/>
         <value type="string" value="xfce-ui-settings.desktop"/>
         <value type="string" value="nixos-manual.desktop"/>
       </property>

@@ -1,19 +1,30 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
     adwaita-icon-theme
     gnome-themes-extra
+
+    whitesur-cursors
   ];
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+
+    name = "WhiteSur-cursors";
+    package = pkgs.whitesur-cursors;
+    size = 24;
+  };
 
   gtk = {
     enable = true;
     theme.name = "Adwaita-dark";
     iconTheme.name = "Adwaita";
-    cursorTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
-      size = 24;
+
+    font = {
+      name = "Inter";
+      size = 12;
     };
 
     gtk3.extraConfig = {
@@ -35,8 +46,9 @@
     [Settings]
     gtk-theme-name=Adwaita-dark
     gtk-icon-theme-name=Adwaita
-    gtk-cursor-theme-name=Adwaita
+    gtk-cursor-theme-name=WhiteSur-cursors
     gtk-cursor-theme-size=24
+    gtk-font-name=Inter 12
     gtk-application-prefer-dark-theme=1
   '';
 
@@ -44,13 +56,14 @@
     [Settings]
     gtk-theme-name=Adwaita-dark
     gtk-icon-theme-name=Adwaita
-    gtk-cursor-theme-name=Adwaita
+    gtk-cursor-theme-name=WhiteSur-cursors
     gtk-cursor-theme-size=24
+    gtk-font-name=Inter 12
     gtk-application-prefer-dark-theme=1
   '';
 
   home.sessionVariables = {
-    XCURSOR_THEME = "Adwaita";
+    XCURSOR_THEME = "WhiteSur-cursors";
     XCURSOR_SIZE = "24";
   };
 }

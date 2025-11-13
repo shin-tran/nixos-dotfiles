@@ -1,0 +1,12 @@
+app=/nix/store/savkg0rk6bskikz34nywiy27lq2p3vhz-google-chrome-142.0.7444.59/bin/google-chrome-stable
+custom_action_command=none
+last_user=
+last_extension=png
+show_in_folder=true
+screenshot_dir=file:/home/ngoc/Pictures
+action=1
+delay=0
+region=2
+show_mouse=0
+show_border=1
+
