@@ -54,7 +54,7 @@
     dracula-theme
     dracula-icon-theme
 
-    # === KDE Plasma (X11) Tối thiểu ===
+    # === KDE Plasma (X11) ===
     plasma-desktop         # Gói lõi cho Plasma (phiên bản X11)
     systemsettings         # Cần thiết để vào System Settings
     kde-gtk-config         # GÓI QUAN TRỌNG: để đồng bộ theme Qt/GTK
