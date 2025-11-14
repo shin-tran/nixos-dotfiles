@@ -9,6 +9,6 @@
     # ./wofi.nix
     # ./foot.nix
     # ./hyprpaper.nix
-    ./xfce.nix
+    # ./xfce.nix
   ];
 }

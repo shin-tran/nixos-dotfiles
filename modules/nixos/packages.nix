@@ -53,5 +53,12 @@
     whitesur-cursors
     dracula-theme
     dracula-icon-theme
+
+    # === KDE Plasma (X11) Tối thiểu ===
+    plasma-desktop         # Gói lõi cho Plasma (phiên bản X11)
+    systemsettings         # Cần thiết để vào System Settings
+    kde-gtk-config         # GÓI QUAN TRỌNG: để đồng bộ theme Qt/GTK
+    kio-extras             # Thêm các tính năng I/O (ví dụ: xem trước file)
+    kdePackages.dolphin    # Trình quản lý file
   ];
 }
