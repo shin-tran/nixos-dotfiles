@@ -1,11 +1,5 @@
-{ config, pkgs, ... }:
-
+{ ... }:
 {
-  virtualisation.docker = {
-    enable = false;
-    autoPrune.enable = true;
-  };
-
   services = {
     power-profiles-daemon.enable = true;
     openssh.enable = true;

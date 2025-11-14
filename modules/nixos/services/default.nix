@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-
+{ ... }:
 {
   imports = [
     ./nvidia.nix
@@ -10,6 +9,7 @@
     ./audio.nix
     ./xserver.nix
     ./fcitx5.nix
+    ./docker.nix
     ./misc.nix
   ];
 }

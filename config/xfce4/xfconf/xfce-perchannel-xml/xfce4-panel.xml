@@ -126,6 +126,12 @@
       <property name="menu-opacity" type="int" value="80"/>
       <property name="view-mode" type="int" value="1"/>
       <property name="launcher-show-description" type="bool" value="false"/>
+      <property name="favorites" type="array">
+        <value type="string" value="xfce4-web-browser.desktop"/>
+        <value type="string" value="xfce4-file-manager.desktop"/>
+        <value type="string" value="xfce4-terminal-emulator.desktop"/>
+        <value type="string" value="btop.desktop"/>
+      </property>
     </property>
     <property name="plugin-25" type="string" value="systemload">
       <property name="network" type="empty">

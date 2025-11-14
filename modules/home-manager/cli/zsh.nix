@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   programs.zsh = {
@@ -15,6 +15,9 @@
       btw = "echo i use nixos, btw";
       vim = "nvim";
       ncg = "sudo nix-collect-garbage -d";
+
+      docker-start = "sudo systemctl start docker.service docker.socket";
+      docker-stop = "sudo systemctl stop docker.service docker.socket";
     };
     initContent = ''
       nitch
